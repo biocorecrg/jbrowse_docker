@@ -14,7 +14,8 @@ Example:
 
     docker exec container /srv/jbrowse/bin/generate-names.pl -v --workdir jbrowse/hoverfly
 
-# Plugins
+
+# Plugins
 
 * https://gmod.github.io/jbrowse-registry/
 
