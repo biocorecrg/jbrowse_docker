@@ -14,4 +14,11 @@ Example:
 
     docker exec container /srv/jbrowse/bin/generate-names.pl -v --workdir jbrowse/hoverfly
 
+# Plugins
 
+* https://gmod.github.io/jbrowse-registry/
+
+# TODO
+
+* Remove install.sh part from Docker build
+* Add elastic search plugin: https://github.com/elsiklab/jbrowse_elasticsearch

@@ -1,11 +1,11 @@
 # from node image
-FROM node:dubnium
+FROM node:erbium
 
 MAINTAINER Toni Hermoso Pulido <toni.hermoso@crg.eu>
 
-ARG JBROWSE_VERSION=1.16.6
-ARG SAMTOOLS_VERSION=1.9
-ARG HTSLIB_VERSION=1.9
+ARG JBROWSE_VERSION=1.16.9
+ARG SAMTOOLS_VERSION=1.10
+ARG HTSLIB_VERSION=1.10.2
 
 # Handle dependencies
 RUN apt-get update && apt-get -y upgrade && apt-get -y install build-essential git zlib1g-dev && \
