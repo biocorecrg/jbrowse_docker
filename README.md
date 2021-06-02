@@ -5,14 +5,14 @@ Docker installation of JBrowse
 
 Running container:
 
-    docker run -d --name mybrowser -v /data/repos/annowiki/genomes/hoverfly/db:/srv/jbrowse/data -v /data/repos/annowiki/genomes/hoverfly/jbrowse/jbrowse.conf:/srv/jbrowse/jbrowse.conf -p 8082:8082 jbrowse
+    docker run -d --name mybrowser -v /data/repos/asebe/hydra/db:/srv/jbrowse/data -v /data/repos/asebe/hydra/jbrowse/jbrowse.conf:/srv/jbrowse/jbrowse.conf -p 8082:8082 jbrowse
 
 Example commands:
 
 
-    docker exec mybrowser /srv/jbrowse/bin/flatfile-to-json.pl --trackType CanvasFeatures --type CDS  --trackLabel hoverfly_CDS --gff /srv/jbrowse/data/hoverfly.gff --out /srv/jbrowse/data/jbrowse/hoverfly
+    docker exec mybrowser /srv/jbrowse/bin/flatfile-to-json.pl --trackType CanvasFeatures --type CDS  --trackLabel hydra_CDS --gff /srv/jbrowse/data/hoverfly.gff --out /srv/jbrowse/data/jbrowse/hoverfly
 
-    docker exec mybrowser /srv/jbrowse/bin/prepare-refseqs.pl --out /srv/jbrowse/data/jbrowse/hoverfly --fasta /srv/jbrowse/data/hoverfly.assembly_scaffold.fa
+    docker exec mybrowser /srv/jbrowse/bin/prepare-refseqs.pl --out /srv/jbrowse/data/jbrowse/hydra --fasta /srv/jbrowse/data/Hm105_Dovetail_Assembly_1.0.fa
 
     docker exec mybrowser /srv/jbrowse/bin/generate-names.pl -v --out /srv/jbrowse/data/jbrowse/hoverfly
 
@@ -27,3 +27,4 @@ Example commands:
 
 * Remove install.sh part from Docker build
 * Add elastic search plugin: https://github.com/elsiklab/jbrowse_elasticsearch
+* Jbrowse2 version
