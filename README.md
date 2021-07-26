@@ -3,6 +3,9 @@ Docker installation of JBrowse
 
     docker build -t jbrowse .
 
+Built Docker can be found at [Docker Hub](https://hub.docker.com/r/biocorecrg/jbrowse).
+
+
 Running container:
 
     docker run -d --name mybrowser -v /data/repos/asebe/hydra/db:/srv/jbrowse/data -v /data/repos/asebe/hydra/jbrowse/jbrowse.conf:/srv/jbrowse/jbrowse.conf -p 8082:8082 jbrowse
