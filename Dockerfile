@@ -1,15 +1,16 @@
 # from node image
-FROM node:erbium
+FROM node:16-buster
 
-MAINTAINER Toni Hermoso Pulido <toni.hermoso@crg.eu>
+LABEL org.opencontainers.image.authors="toni.hermoso@crg.eu"
 
-ARG JBROWSE_VERSION=1.16.11
-ARG SAMTOOLS_VERSION=1.12
-ARG HTSLIB_VERSION=1.12
+ARG JBROWSE_VERSION=1.7.9
+ARG SAMTOOLS_VERSION=1.15.1
+ARG HTSLIB_VERSION=1.15.1
 
 # Handle dependencies
-RUN apt-get update && apt-get -y upgrade && apt-get -y install build-essential git zlib1g-dev && \
-	 apt-get clean && echo -n > /var/lib/apt/extended_states
+RUN apt-get update && apt-get -y upgrade && apt-get -y install build-essential git zlib1g-dev \
+	genometools && \
+	apt-get clean && echo -n > /var/lib/apt/extended_states
 
 RUN mkdir -p /soft/bin
 
@@ -34,18 +35,16 @@ RUN mkdir -p /srv
 
 WORKDIR /srv
 
-RUN git clone https://github.com/gmod/jbrowse
+COPY index.js .
+COPY package.json .
 
-WORKDIR /srv/jbrowse
+RUN npm install -g forever
+RUN npm install -g @jbrowse/cli
+RUN npm install
 
-RUN git checkout ${JBROWSE_VERSION}-release # or version of your choice
+# Volumes
+VOLUME /var/www
+VOLUME /data
 
-# Volume
-VOLUME /srv/jbrowse/data
-RUN rm -f /srv/jbrowse/jbrowser.conf
-VOLUME /srv/jbrowse/jbrowser.conf
-
-RUN ./setup.sh
-
-EXPOSE 8082
-CMD npm run start
+EXPOSE 8080
+CMD NODE_ENV=production forever index.js
