@@ -20,7 +20,3 @@ There are many ways to organize paths. It is important to be aware of them.
 # Plugins
 
 * https://gmod.github.io/jbrowse-registry/
-
-# TODO
-
-* Add elastic search plugin: https://github.com/elsiklab/jbrowse_elasticsearch
