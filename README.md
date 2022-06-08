@@ -28,7 +28,8 @@ docker exec mybrowser bash -c 'cd /var/www; jbrowse create .'
 docker exec mybrowser bash -c 'jbrowse add-assembly /data/Hm105_Dovetail_Assembly_1.0.fa --out /var/www --load symlink'
 # Then all the different tracks with their names
 docker exec mybrowser bash -c 'jbrowse add-track /data/ATAC/tentacles.mRp.clN.bigWig --name tentacles --out /var/www --load symlink'
-
+# Index names and so
+docker exec mybrowser bash -c 'jbrowse text-index --out /var/www'
 ```
 
 
