@@ -25,6 +25,7 @@ Here we expose the port ```8081```. Internal port ```8080``` will be always the 
 # Create - needs to be empty 
 docker exec mybrowser bash -c 'cd /var/www; jbrowse create .'
 # Then assembly. We symlink and we allow magic from container
+docker exec mybrowser samtools faidx /data/Hm105_Dovetail_Assembly_1.0.fa
 docker exec mybrowser bash -c 'jbrowse add-assembly /data/Hm105_Dovetail_Assembly_1.0.fa --out /var/www --load symlink'
 # Then all the different tracks with their names
 docker exec mybrowser bash -c 'jbrowse add-track /data/ATAC/tentacles.mRp.clN.bigWig --name tentacles --out /var/www --load symlink'
