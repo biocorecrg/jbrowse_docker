@@ -14,7 +14,7 @@ It's important to define a directory/volume where the different generated static
 
 Here we expose the port ```8081```. Internal port ```8080``` will be always the same.
 
-    docker run -d --name mybrowser -v /my/var/www:/var/www -v /my/data:/data -p 8081:8080 jbrowse2
+    docker run -d --user $(id -u):$(id -g) --name mybrowser -v /my/var/www:/var/www -v /my/data:/data -p 8081:8080 jbrowse2
 
 
 ## Build instructions
